@@ -96,8 +96,6 @@ const useDappConfig = {
   }
 };
 
-console.log('[prince]: config', config)
-
 const client = clientFactory(config.app.subgraphApiUri);
 
 const Updaters = () => {
