@@ -35,7 +35,7 @@
 .link,
 .link:hover,
 .link:active {
-  color: black;
+  color: 'var(--brand-dark-white-text)';
   text-decoration: none;
   display: flex;
   cursor: pointer;

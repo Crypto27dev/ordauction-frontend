@@ -14,9 +14,9 @@
   width: auto;
   padding: 10px 16px;
   height: 3rem;
-  color: white;
   border: transparent;
-  background-color: var(--brand-black);
+  color: var(--brand-black);
+  background-color: var(--brand-dark-white-text);
   font-weight: bold;
   letter-spacing: normal;
   font-size: 19px;
@@ -29,7 +29,8 @@
 
 .bidBtn:hover,
 .bidBtn:active,
-.bidBtn:focus .bidBtn:disabled {
+.bidBtn:visited,
+.bidBtn:focus {
   outline: none !important;
   box-shadow: none !important;
   background-color: #2125298a;

@@ -27,7 +27,7 @@ const CurrentBid: React.FC<{ currentBid: BigNumber | BidNa; auctionEnded: boolea
       <Col xs={5} lg={12} className={classes.leftCol}>
         <h4
           style={{
-            color: isCool ? 'var(--brand-cool-light-text)' : 'var(--brand-warm-light-text)',
+            color: isCool ? 'var(--brand-dark-blue-text)' : 'var(--brand-warm-blue-text)',
           }}
         >
           {titleContent}
@@ -36,7 +36,7 @@ const CurrentBid: React.FC<{ currentBid: BigNumber | BidNa; auctionEnded: boolea
       <Col xs="auto" lg={12}>
         <h2
           className={classes.currentBid}
-          style={{ color: isCool ? 'var(--brand-cool-dark-text)' : 'var(--brand-warm-dark-text)' }}
+          style={{ color: isCool ? 'var(--brand-dark-white-text)' : 'var(--brand-warm-white-text)' }}
         >
           {currentBid === BID_N_A ? BID_N_A : <TruncatedAmount amount={currentBid && currentBid} />}
         </h2>

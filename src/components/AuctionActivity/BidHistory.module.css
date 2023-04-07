@@ -31,14 +31,14 @@
 }
 
 .bidRowWarm a {
-  color: var(--brand-color-red) !important;
+  color: var(--brand-dark-blue-text) !important;
   font-weight: bold;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }
 
 .bidRowCool a {
-  color: var(--brand-color-blue) !important;
+  color: var(--brand-warm-blue-text) !important;
   font-weight: bold;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -77,11 +77,11 @@
 }
 
 .bidRowCool .bidder > div > div {
-  color: var(--brand-cool-dark-text);
+  color: var(--brand-dark-blue-text);
 }
 
 .bidRowWarm .bidder > div > div {
-  color: var(--brand-warm-dark-text);
+  color: var(--brand-warm-blue-text);
 }
 
 .bidDate {
@@ -105,11 +105,11 @@
 }
 
 .bidRowCool .bidAmount {
-  color: var(--brand-cool-dark-text);
+  color: var(--brand-dark-blue-text);
 }
 
 .bidRowWarm .bidAmount {
-  color: var(--brand-warm-dark-text);
+  color: var(--brand-warm-blue-text);
 }
 
 .linkSymbol {

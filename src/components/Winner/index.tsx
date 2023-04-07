@@ -74,6 +74,9 @@ const Winner: React.FC<WinnerProps> = props => {
       target={'_blank'}
       rel="noreferrer"
       className={classes.link}
+      style={{
+        color: isCool ? 'var(--brand-dark-white-text)' : 'var(--brand-warm-white-text)'
+      }}
     >
       <Tooltip
         tip="View on Etherscan"
@@ -93,7 +96,7 @@ const Winner: React.FC<WinnerProps> = props => {
         <Col xs={1} lg={12} className={classes.leftCol}>
           <h4
             style={{
-              color: isCool ? 'var(--brand-cool-light-text)' : 'var(--brand-warm-light-text)',
+              color: isCool ? 'var(--brand-dark-blue-text)' : 'var(--brand-warm-blue-text)',
             }}
             className={classes.winnerCopy}
           >
@@ -104,7 +107,7 @@ const Winner: React.FC<WinnerProps> = props => {
           <h2
             className={classes.winnerContent}
             style={{
-              color: isCool ? 'var(--brand-cool-dark-text)' : 'var(--brand-warm-dark-text)',
+              color: isCool ? 'var(--brand-dark-blue-text)' : 'var(--brand-warm-blue-text)',
             }}
           >
             {isNounders ? nounderNounContent : nonNounderNounContent}

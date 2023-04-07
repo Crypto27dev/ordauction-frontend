@@ -70,7 +70,7 @@ const AuctionTimer: React.FC<{
       <Col xs={timerToggle ? 4 : 6} lg={12} className={classes.leftCol}>
         <h4
           style={{
-            color: isCool ? 'var(--brand-cool-light-text)' : 'var(--brand-warm-light-text)',
+            color: isCool ? 'var(--brand-dark-blue-text)' : 'var(--brand-warm-blue-text)',
           }}
         >
           {timerToggle ? (
@@ -92,7 +92,7 @@ const AuctionTimer: React.FC<{
           <h2
             className={clsx(classes.timerWrapper, classes.timeLeft)}
             style={{
-              color: isCool ? 'var(--brand-cool-dark-text)' : 'var(--brand-warm-dark-text)',
+              color: isCool ? 'var(--brand-dark-white-text)' : 'var(--brand-warm-white-text)',
             }}
           >
             <div className={classes.timerSection}>
@@ -124,7 +124,7 @@ const AuctionTimer: React.FC<{
           <h2
             className={classes.timerWrapper}
             style={{
-              color: isCool ? 'var(--brand-cool-dark-text)' : 'var(--brand-warm-dark-text)',
+              color: isCool ? 'var(--brand-dark-white-text)' : 'var(--brand-warm-white-text)',
             }}
           >
             <div className={clsx(classes.timerSection, classes.clockSection)}>

@@ -27,7 +27,7 @@
 
 .bidHistory {
   margin-left: 0.5rem;
-  color: var(--brand-color-cool);
+  color: var(--brand-dark-blue-text);
   font-family: 'PT Root UI';
   font-weight: bold;
   font-size: 1rem;
@@ -37,7 +37,7 @@
 
 .bidHistoryWarm {
   margin-left: 0.5rem;
-  color: var(--brand-color-red);
+  color: var(--brand-warm-blue-text);
   font-family: 'PT Root UI';
   font-weight: bold;
   font-size: 1rem;
@@ -46,7 +46,7 @@
 
 .bidHistoryCool {
   margin-left: 0.5rem;
-  color: var(--brand-color-blue);
+  color: var(--brand-dark-blue-text);
   font-family: 'PT Root UI';
   font-weight: bold;
   font-size: 1rem;

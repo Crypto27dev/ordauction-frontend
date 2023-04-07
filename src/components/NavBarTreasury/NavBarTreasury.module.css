@@ -24,6 +24,7 @@
   margin-left: 0.25rem;
   margin-right: 0.4rem;
   margin-top: 1px;
+  color: var(--brand-dark-blue-text);
 }
 
 .warmInfo .icon {
@@ -50,25 +51,25 @@
 }
 
 .warmInfo .treasuryBalance {
-  color: var(--brand-warm-dark-text);
+  color: var(--brand-warm-blue-text);
 }
 
 .coolInfo .treasuryBalance {
-  color: var(--brand-cool-dark-text);
+  color: var(--brand-dark-blue-text);
 }
 
-.treasuryHeader {
+/* .treasuryHeader {
   opacity: 0.5;
-}
+} */
 
 .button:hover {
   cursor: pointer;
 }
 
 .coolInfo {
-  border: 1px solid var(--brand-cool-border);
+  border: 1px solid var(--brand-dark-white-text);
   border-radius: 10px;
-  color: var(--brand-cool-dark-text);
+  color: var(--brand-dark-white-text);
 }
 
 .coolInfo:hover {

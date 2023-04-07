@@ -27,8 +27,8 @@ export const applicationSlice = createSlice({
   initialState,
   reducers: {
     setStateBackgroundColor: (state, action: PayloadAction<string>) => {
-      state.stateBackgroundColor = action.payload;
-      state.isCoolBackground = action.payload === grey;
+      state.stateBackgroundColor = grey;
+      state.isCoolBackground = /* action.payload === grey */true;
     },
     setAlertModal: (state, action: PayloadAction<AlertModal>) => {
       state.alertModal = action.payload;

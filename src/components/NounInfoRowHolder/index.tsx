@@ -52,14 +52,14 @@ const NounInfoRowHolder: React.FC<NounInfoRowHolderProps> = props => {
       }}
       id="holder-etherscan-tooltip"
     >
-      <div className={classes.nounHolderInfoContainer}>
+      <div className={classes.nounHolderInfoContainer} style={{color:'var(--brand-dark-blue-text)'}}>
         <span>
           <Image src={_HeartIcon} className={classes.heartIcon} />
         </span>
         <span>
           <Trans>Winner</Trans>
         </span>
-        <span>
+        <span style={{color:'var(--brand-dark-white-text)'}}>
           <a
             className={
               isCool ? classes.nounHolderEtherscanLinkCool : classes.nounHolderEtherscanLinkWarm

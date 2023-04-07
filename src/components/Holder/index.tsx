@@ -61,7 +61,7 @@ const Holder: React.FC<HolderProps> = props => {
         <Col xs={1} lg={12} className={classes.leftCol}>
           <h4
             style={{
-              color: isCool ? 'var(--brand-cool-light-text)' : 'var(--brand-warm-light-text)',
+              color: isCool ? 'var(--brand-dark-blue-text)' : 'var(--brand-warm-blue-text)',
             }}
             className={classes.holderCopy}
           >
@@ -72,7 +72,7 @@ const Holder: React.FC<HolderProps> = props => {
           <h2
             className={classes.holderContent}
             style={{
-              color: isCool ? 'var(--brand-cool-dark-text)' : 'var(--brand-warm-dark-text)',
+              color: isCool ? 'var(--brand-dark-white-text)' : 'var(--brand-warm-white-text)'
             }}
           >
             {isNounders ? nounderNounContent : nonNounderNounContent}

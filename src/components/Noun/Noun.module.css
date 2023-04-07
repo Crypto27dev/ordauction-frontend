@@ -7,6 +7,11 @@
   width: 100%;
   height: auto;
   vertical-align: middle;
+  border-radius: 50%;
+  /* border: thick solid #7293ff;
+  filter: drop-shadow(rgb(255, 255, 255) 0px 0px 9px); */
+  border: 8px solid rgb(221, 216, 231);
+  filter: drop-shadow(rgb(221, 216, 231) 0px 0px 15px);
 }
 
 .imgWrapper {

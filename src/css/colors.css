@@ -1,4 +1,8 @@
 :root {
+  --brand-dark-blue-text: #2a7aa1;
+  --brand-warm-blue-text: #3093c3;
+  --brand-dark-white-text: #edf2f0;
+  --brand-warm-white-text: #fff;
   --brand-bg-green: #edf2f0;
   --brand-dark-red: #d63c5e;
   --brand-light-green: #6da886;
@@ -20,7 +24,7 @@
   --brand-gray-light-text: #8c8d92;
   --brand-gray-light-text-translucent: rgb(140, 141, 146, 0.1);
   --brand-gray-hover: #fafafb;
-  --brand-color-red: #e40536;
+  --brand-color-red: #a54646;
   --brand-color-blue: #4965f0;
   --brand-color-green: #43b369;
   --brand-color-red-translucent: rgba(214, 60, 94, 0.1);

@@ -45,12 +45,12 @@ const NounInfoRowBirthday: React.FC<NounInfoRowBirthdayProps> = props => {
   const birthday = new Date(Number(startTime._hex) * 1000);
 
   return (
-    <div className={classes.birthdayInfoContainer}>
+    <div className={classes.birthdayInfoContainer} style={{color:'var(--brand-dark-blue-text)'}}>
       <span>
         <Image src={_BirthdayIcon} className={classes.birthdayIcon} />
       </span>
       <Trans>Born</Trans>
-      <span className={classes.nounInfoRowBirthday}>
+      <span className={classes.nounInfoRowBirthday} style={{color:'var(--brand-dark-white-text)'}}>
         {i18n.date(birthday, { month: 'long', year: 'numeric', day: '2-digit' })}
       </span>
     </div>
