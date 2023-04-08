@@ -24,6 +24,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { AvatarProvider } from '@davatar/react';
 import dayjs from 'dayjs';
 import DelegatePage from './pages/DelegatePage';
+import Inscribe from './pages/Inscribe';
 
 function App() {
   const { account, chainId, library } = useEthers();
@@ -68,6 +69,7 @@ function App() {
             <Route exact path="/playground" component={Playground} />
             <Route exact path="/delegate" component={DelegatePage} />
             <Route exact path="/explore" component={ExplorePage} />
+            <Route exact path="/inscribe" component={Inscribe} />
             <Route component={NotFoundPage} />
           </Switch>
           <Footer />

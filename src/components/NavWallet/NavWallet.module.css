@@ -52,6 +52,7 @@
   margin-left: 4px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   transition: all 0.125s ease-in-out;
+  /* min-width: 300px; */
 }
 
 .dropDownTop:hover {

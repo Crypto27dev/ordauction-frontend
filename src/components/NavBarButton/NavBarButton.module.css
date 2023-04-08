@@ -228,3 +228,7 @@
 .abstainVoteSubmit:hover {
   filter: brightness(80%);
 }
+
+div.VisibleButton {
+  visibility: visible;
+}

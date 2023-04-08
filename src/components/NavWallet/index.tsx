@@ -146,20 +146,20 @@ const NavWallet: React.FC<NavWalletProps> = props => {
       >
         <div>
           <div
-            onClick={switchWalletHandler}
             className={clsx(
               classes.dropDownTop,
-              navDropdownClasses.button,
-              navDropdownClasses.dropdownPrimaryText,
-              usePickByState(
-                navDropdownClasses.whiteInfoSelectedTop,
-                navDropdownClasses.coolInfoSelected,
-                navDropdownClasses.warmInfoSelected,
-                history,
-              ),
+              navDropdownClasses.dropdownPrimaryText
             )}
           >
-            <Trans>Switch wallet</Trans>
+            <Trans>Wallet Address</Trans>
+          </div>
+          <div
+            className={clsx(
+              classes.dropDownTop,
+              navDropdownClasses.dropdownPrimaryText
+            )}
+          >
+            <Trans>Wallet Balance</Trans>
           </div>
 
           <div
@@ -205,7 +205,7 @@ const NavWallet: React.FC<NavWalletProps> = props => {
           justifyContent: 'space-between',
         }}
       >
-        <div className={navDropdownClasses.connectContentMobileWrapper}>
+        {/* <div className={navDropdownClasses.connectContentMobileWrapper}>
           <div className={clsx(navDropdownClasses.wrapper, getNavBarButtonVariant(buttonStyle))}>
             <div className={navDropdownClasses.button}>
               <div className={classes.icon}>
@@ -217,7 +217,7 @@ const NavWallet: React.FC<NavWalletProps> = props => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={`d-flex flex-row  ${classes.connectContentMobileText}`}>
           <div
@@ -226,9 +226,17 @@ const NavWallet: React.FC<NavWalletProps> = props => {
               color: mobileTextColor,
             }}
             className={classes.mobileSwitchWalletText}
-            onClick={switchWalletHandler}
           >
-            <Trans>Switch</Trans>
+            <Trans>Wallet Address</Trans>
+          </div>
+          <div
+            style={{
+              borderRight: `1px solid ${mobileBorderColor}`,
+              color: mobileTextColor,
+            }}
+            className={classes.mobileSwitchWalletText}
+          >
+            <Trans>Wallet Balance</Trans>
           </div>
           <div className={classes.disconnectText} onClick={disconectWalletHandler}>
             <Trans>Sign out</Trans>

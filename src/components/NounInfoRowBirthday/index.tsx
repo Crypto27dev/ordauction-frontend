@@ -47,7 +47,7 @@ const NounInfoRowBirthday: React.FC<NounInfoRowBirthdayProps> = props => {
   return (
     <div className={classes.birthdayInfoContainer} style={{color:'var(--brand-dark-blue-text)'}}>
       <span>
-        <Image src={_BirthdayIcon} className={classes.birthdayIcon} />
+        <Image src={_BirthdayIcon} className={classes.birthdayIcon}/>
       </span>
       <Trans>Born</Trans>
       <span className={classes.nounInfoRowBirthday} style={{color:'var(--brand-dark-white-text)'}}>

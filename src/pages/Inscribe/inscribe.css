@@ -1,0 +1,19 @@
+div.Inscribe {
+    background: linear-gradient(90deg, #200953, #16092f);
+    color: #ffffff;
+  }
+
+h1.page-header {
+    font-family: "Power Grotesk";
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: unset;
+}
+
+.Inscribe .label {
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.Inscribe .react-calendar button, select {
+    color: rgb(54 149 247);
+}

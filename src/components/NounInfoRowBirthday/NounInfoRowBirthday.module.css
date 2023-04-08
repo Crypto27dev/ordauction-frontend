@@ -14,3 +14,7 @@
   margin-bottom: 4px;
   margin-right: 7px;
 }
+
+img {
+  display: inline;
+}

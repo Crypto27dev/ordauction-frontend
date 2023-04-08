@@ -24,13 +24,13 @@ const NounsIntroSection = () => {
         <Col lg={6}>
           <div className={classes.textWrapper}>
             <h1>
-              <Trans>One Noun, Every Day, Forever.</Trans>
+              <Trans>One Ord, Every Day, Forever.</Trans>
             </h1>
             <p>
               <Trans>
-                Behold, an infinite work of art! Nouns is a community-owned brand that makes a
+                Behold, an infinite work of art! Ords is a community-owned brand that makes a
                 positive impact by funding ideas and fostering collaboration. From collectors and
-                technologists, to non-profits and brands, Nouns is for everyone.
+                technologists, to non-profits and brands, Ords is for everyone.
               </Trans>
             </p>
           </div>
@@ -77,13 +77,13 @@ const NounsIntroSection = () => {
         <Col lg={6} className={`order-lg-2 order-1`}>
           <div className={`${classes.textWrapper} ${classes.youtubeSectionText}`}>
             <h1>
-              <Trans>Build With Nouns. Get Funded.</Trans>
+              <Trans>Build With Ords. Get Funded.</Trans>
             </h1>
             <p>
               <Trans>
-                There’s a way for everyone to get involved with Nouns. From whimsical endeavors like
+                There’s a way for everyone to get involved with Ords. From whimsical endeavors like
                 naming a frog, to ambitious projects like constructing a giant float for the Rose
-                Parade, or even crypto infrastructure like {prophouseLink}. Nouns funds projects of
+                Parade, or even crypto infrastructure like {prophouseLink}. Ords funds projects of
                 all sizes and domains.
               </Trans>
             </p>
@@ -99,8 +99,8 @@ const NounsIntroSection = () => {
             </h1>
             <p>
               <Trans>
-                Every new Noun pushed right to your pocket! View the current auction, remix your own
-                Noun, and explore the entire history directly from the app.
+                Every new Ord pushed right to your pocket! View the current auction, remix your own
+                Ord, and explore the entire history directly from the app.
               </Trans>
               <br />
               <a
@@ -111,14 +111,14 @@ const NounsIntroSection = () => {
                 <img
                   src={dlFromAppStoreImg}
                   className={classes.dlFromAppStoreImg}
-                  alt="download nouns ios app from app store"
+                  alt="download Ords ios app from app store"
                 />
               </a>
             </p>
           </div>
         </Col>
         <Col lg={6} className={classes.iosImgContainer}>
-          <img src={nounsIosGif} className={classes.iosImg} alt="nouns ios" />
+          <img src={nounsIosGif} className={classes.iosImg} alt="Ords ios" />
         </Col>
       </Section>
     </>

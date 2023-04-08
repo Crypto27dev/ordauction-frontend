@@ -43,6 +43,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { nounPath } from './utils/history';
 import { push } from 'connected-react-router';
 import { LanguageProvider } from './i18n/LanguageProvider';
+import global from "./store/reducers/global";
+import user from "./store/reducers/user";
 
 dotenv.config();
 
@@ -57,6 +59,8 @@ const createRootReducer = (history: History) =>
     logs,
     pastAuctions,
     onDisplayAuction,
+    global: global,
+    userInfo: user
   });
 
 export default function configureStore(preloadedState: PreloadedState<any>) {

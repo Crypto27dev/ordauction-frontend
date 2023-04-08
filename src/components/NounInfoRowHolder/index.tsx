@@ -54,7 +54,7 @@ const NounInfoRowHolder: React.FC<NounInfoRowHolderProps> = props => {
     >
       <div className={classes.nounHolderInfoContainer} style={{color:'var(--brand-dark-blue-text)'}}>
         <span>
-          <Image src={_HeartIcon} className={classes.heartIcon} />
+          <Image src={_HeartIcon} className={classes.heartIcon}/>
         </span>
         <span>
           <Trans>Winner</Trans>
