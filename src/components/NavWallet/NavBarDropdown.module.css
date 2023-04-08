@@ -139,7 +139,10 @@
 .desktopDropdown {
   background-color: inherit !important;
   border: 0px !important;
-  width: 300px;
+  min-width: 11rem;
+  position: absolute;
+  right: 0px;
+  text-align: right;
 }
 
 @media (max-width: 992px) {

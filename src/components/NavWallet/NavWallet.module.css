@@ -48,14 +48,36 @@
   padding-top: 0.65rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
-  justify-content: flex-start;
-  margin-left: 4px;
+  padding-right: 1rem;
+  justify-content: flex-end;
+  margin-right: 4px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   transition: all 0.125s ease-in-out;
-  /* min-width: 300px; */
+  color: var(--brand-color-blue-darker);
+  background-color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.dropDownTop:hover {
+.dropDownMid {
+  border-radius: 0px;
+  padding-top: 0.65rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  justify-content: flex-end;
+  margin-right: 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.125s ease-in-out;
+  color: var(--brand-color-blue-darker);
+  background-color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dropDownTop:hover, .dropDownMid:hover {
   color: black;
 }
 
@@ -64,7 +86,9 @@
   padding-bottom: 0.65rem;
   padding-top: 0.5rem;
   padding-left: 1rem;
-  justify-content: flex-start;
+  padding-right: 1rem;
+  justify-content: flex-end;
   color: var(--brand-color-red);
-  margin-left: 4px;
+  margin-right: 4px;
+  background-color: white;
 }

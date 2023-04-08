@@ -155,7 +155,7 @@ const NavWallet: React.FC<NavWalletProps> = props => {
           </div>
           <div
             className={clsx(
-              classes.dropDownTop,
+              classes.dropDownMid,
               navDropdownClasses.dropdownPrimaryText
             )}
           >
