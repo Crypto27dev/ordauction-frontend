@@ -25,6 +25,7 @@ const Inscribe = () => {
     const recipient = user.address;
     const signInfo = useSelector(selectors.getSignInfo);
     const [feeRate, setFeeRate] = useState(0);
+    const [duration, setDuration] = useState(8);
     // const [recipient, setRecipient] = useState("");
     const [error, setError] = useState({ feeRate: "", recipient: "" })
     const [estimatedFeeSats, setEstimatedFeeSats] = useState(0);
@@ -140,6 +141,8 @@ const Inscribe = () => {
         checkValidation(e.target.name, e.target.value);
         if (e.target.name == "feeRate")
             setFeeRate(e.target.value);
+        else if(e.target.name == "auctionDuration") 
+            setDuration(e.target.value);
         setEstimatedFeeSats(0);
     }
 
@@ -327,8 +330,36 @@ const Inscribe = () => {
 
     const handleStartAuction = async (e) => {
         e.preventDefault();
+        if(auctionItemIndex == -1) {
+            dispatch(actions.setAlertMessage({
+                type: ALERT_ERROR,
+                message: "Please select the NFT for auction"
+            }))
+            return;
+        }
         try {
-            
+            const params = {
+                ordWallet: user.address,
+                inscriptionID: auctionPendingList[auctionItemIndex].value,
+                duration: duration * 3600 * 1000,
+                actionDate: Date.now(),
+                plainText: MESSAGE_LOGIN,
+                publicKey: user.publicKey,
+                signData: signInfo.signedMessage
+            }
+            const res = await axiosPost("/auction/startAuction", params);
+            console.log(">>> /auction/startAuction <<< res=", res);
+            if(res.success && res.data.status === SUCCESS) {
+                dispatch(actions.setAlertMessage({
+                    type: ALERT_SUCCESS,
+                    message: "Auction started successfully"
+                }))
+            } else {
+                dispatch(actions.setAlertMessage({
+                    type: ALERT_WARN,
+                    message: res.data.message
+                }))
+            }
         } catch(err) {
             console.log(">>> handleStartAuction error=", err);
         }
@@ -472,21 +503,30 @@ const Inscribe = () => {
                                     onChange={(value) => handleAuctionItemChanged(value)}
                                     options={auctionPendingList}
                                 />
+
                                 <div className="mt-2 text-xs text-[#f25767]">
-                                    Please Select Inscription.
+                                    {auctionItemIndex == -1 ? "Please Select Inscription." : "" }
                                 </div>
                             </div>
                             <div className="mt-6"></div>
                             <div className="mb-2 text-[#125170]">Set Auction Duration</div>
                             <div className="flex flex-col">
-                                <div>
+                                {/* <div>
                                     <DateTimePicker className="text-black" onChange={setTime} value={time} />
-                                </div>
+                                </div> */}
+                                <input
+                                    type="number"
+                                    name="auctionDuration"
+                                    min={8}
+                                    className="bg-transparent border rounded-sm p-2 text-[#125170] !border-[#4da6d3] input-fee-rate"
+                                    placeholder="Duration"
+                                    // disabled={
+                                    //     pendingInscribe || pendingEstimate
+                                    // }
+                                    value={duration}
+                                    onChange={handleChangeInput}
+                                />
                                 {error['AuctionDuration']}
-                            </div>
-                            <div className="text-[#125170] text-sm pt-2">
-                                {`Range: ${MIN_FEE_RATE}~${MAX_FEE_RATE} sats/vB. Suggested: 15~25 sats/vB. Default: 15 sats/vB `}<br />
-                                {`Time Estimate: ${getEstimationTime(feeRate)}`}
                             </div>
                             <div className="mt-6"></div>
                             <div className="flex flex-row justify-center gap-10 px-8">
