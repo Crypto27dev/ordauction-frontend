@@ -12,6 +12,7 @@ import { Dropdown } from 'react-bootstrap';
 import WalletConnectModal from '../WalletConnectModal';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import * as actions from "../../store/actions";
+import * as selectors from '../../store/selectors';
 import clsx from 'clsx';
 import { useHistory } from 'react-router-dom';
 import { usePickByState } from '../../utils/colorResponsiveUIUtils';
@@ -26,7 +27,9 @@ import {
 import { useActiveLocale } from '../../hooks/useActivateLocale';
 import responsiveUiUtilsClasses from '../../utils/ResponsiveUIUtils.module.css';
 import useBitcoinWallet from '../../hooks/useBitcoinWallet';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ALERT_ERROR, MESSAGE_LOGIN } from '../../utils/constants';
+
 
 interface NavWalletProps {
   address: string;
@@ -50,46 +53,68 @@ type CustomMenuProps = {
 const NavWallet: React.FC<NavWalletProps> = props => {
 
   const dispatch = useDispatch();
-
-  const { address, buttonStyle } = props;
+  // const { address, buttonStyle } = props;
 
   const [buttonUp, setButtonUp] = useState(false);
-  const [showConnectModal, setShowConnectModal] = useState(false);
+  // const [showConnectModal, setShowConnectModal] = useState(false);
   const history = useHistory();
-  const { library: provider } = useEthers();
-  const activeAccount = useAppSelector(state => state.account.activeAccount);
-  const { deactivate } = useEthers();
-  const ens = useReverseENSLookUp(address);
+  // const { library: provider } = useEthers();
+  // const activeAccount = useAppSelector(state => state.account.activeAccount);
+  // const { deactivate } = useEthers();
+  // const ens = useReverseENSLookUp(address);
   // const shortAddress = useShortAddress(address);
   const activeLocale = useActiveLocale();
 
   //// Bitcoin wallet connection
-  const { connected, connect, disconnect, account } = useBitcoinWallet();
-  const shortAddress = useShortAddress(connected?account.address:"");
+  const { connect, disconnect, signMessage } = useBitcoinWallet();
+  const connected = useSelector(selectors.getWalletConnected);
+  const user = useSelector(selectors.getUserState);
+  const shortAddress = useShortAddress(connected?user.address:"");
 
 
-  const setModalStateHandler = (state: boolean) => {
-    setShowConnectModal(state);
-  };
+  // const setModalStateHandler = (state: boolean) => {
+  //   setShowConnectModal(state);
+  // };
 
-  const switchWalletHandler = () => {
-    setShowConnectModal(false);
-    setButtonUp(false);
-    deactivate();
-    setShowConnectModal(false);
-    setShowConnectModal(true);
-  };
+  // const switchWalletHandler = () => {
+  //   setShowConnectModal(false);
+  //   setButtonUp(false);
+  //   deactivate();
+  //   setShowConnectModal(false);
+  //   setShowConnectModal(true);
+  // };
 
 
   
+  // useEffect(() => {
+  //   console.log(`------ connected=${connected} account=`, user, `------`);
+  //   const _address = user.address;
+  //   dispatch(actions.setUserInfo(_address));
+  // }, [connected])
+
   useEffect(() => {
-    console.log(`------ connected=${connected} account=`, account, `------`);
-    const _address = account.address;
-    dispatch(actions.setUserInfo(_address));
-  }, [connected])
+    const sign = async () => {
+      try{
+        const res = await signMessage(MESSAGE_LOGIN);
+        console.log(">>> signed message res=", res);
+        dispatch(actions.setSignedMessage({signed: true, signedMessage: res.signedMessage}));
+        // res.signedMessage, res.publicKey
+      } catch(err:any) {
+        console.log(">>> Wallet connect error:", err);
+        if(err.code === 4001) {
+          dispatch(actions.setAlertMessage({type: ALERT_ERROR, message: err.message}));
+          dispatch(actions.setUserInfo({address: "", publicKey: ""}));
+          dispatch(actions.setWalletConnected(false));
+        }
+      }
+    }
+    if(connected) {
+      sign();
+    }
+  }, [connected]);
 
   const onClickWalletConnect = async () => {
-    // console.log(">>> onClickWalletConnect");
+    console.log(">>> onClickWalletConnect");
     await connect();
   }
 
@@ -99,11 +124,11 @@ const NavWallet: React.FC<NavWalletProps> = props => {
     await disconnect();
   }
 
-  const disconectWalletHandler = () => {
-    setShowConnectModal(false);
-    setButtonUp(false);
-    deactivate();
-  };
+  // const disconectWalletHandler = () => {
+  //   setShowConnectModal(false);
+  //   setButtonUp(false);
+  //   deactivate();
+  // };
 
 
   const statePrimaryButtonClass = usePickByState(
@@ -156,7 +181,7 @@ const NavWallet: React.FC<NavWalletProps> = props => {
         <div className={navDropdownClasses.button}>
           <div className={classes.icon}>
             {' '}
-            <Davatar size={21} address={address} provider={provider} />
+            <Davatar size={21} address={"0x0000000000000000000000000000000000000000"} generatedAvatarType='jazzicon' />
           </div>
           {/* <div className={navDropdownClasses.dropdownBtnContent}>{ens ? ens : shortAddress}</div> */}
           <div className={navDropdownClasses.dropdownBtnContent}>{connected? shortAddress : ""}</div>

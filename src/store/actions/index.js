@@ -2,6 +2,9 @@ import { createAction as action } from "typesafe-actions"
 
 // Global
 export const setUserInfo = action("global/SET_USER_INFO")();
+export const setWalletConnected = action("global/SET_WALLET_CONNECTED")();
+export const setSignedMessage = action("global/SET_SIGNED_MESSAGE")();
+export const setUserProfile = action("global/SET_USER_PROFILE")();
 
 export const setAlertMessage = action("global/SET_ALERT_MESSAGE")();
 export const setNotifications = action("global/SET_NOTIFICATIONS")();

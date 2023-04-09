@@ -18,6 +18,8 @@ export const PROD_API_PATH = "https://ordinalart.backend.hariwhitedream.com/api"
 
 export const API_PATH = IS_DEVELOPMENT ? DEV_API_PATH : PROD_API_PATH;
 
+export const ADMIN_ADDRESS = IS_DEVELOPMENT ? "tb1q8zcn0ackfwq0jd7fjrxgc0k07x2sv3cf0lh4s6" : "";
+
 export const ALERT_EMPTY = "";
 export const ALERT_SUCCESS = "success";
 export const ALERT_WARN = "warning";
@@ -35,3 +37,6 @@ export const SERVICE_FEE = 40000;
 export const OUTPUT_UTXO = 10000;
 
 export const BECH32_EXAMPLE = "bc1pgrc6jtuaqajm347356xgsk7aeapnh6pnkac2mxa4dm3vq04ezc3qt6g8xs";
+
+////// Signing Messages
+export const MESSAGE_LOGIN = "Sign in to the website!";

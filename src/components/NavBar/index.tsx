@@ -28,15 +28,26 @@ import { usePickByState } from '../../utils/colorResponsiveUIUtils';
 import { ReactComponent as Noggles } from '../../assets/icons/Noggles.svg';
 import { useTreasuryBalance } from '../../hooks/useTreasuryBalance';
 import clsx from 'clsx';
+import { useEffect } from 'react';
+import { ADMIN_ADDRESS } from '../../utils/constants';
+import { useSelector } from 'react-redux';
+import * as selectors from "../../store/selectors";
 
 const NavBar = () => {
-  const activeAccount = useAppSelector(state => state.account.activeAccount);
+  const user = useSelector(selectors.getUserState);
+  const connected = useSelector(selectors.getWalletConnected);
+  // const activeAccount = useAppSelector(state => state.account.activeAccount);
   const stateBgColor = useAppSelector(state => state.application.stateBackgroundColor);
   const isCool = useAppSelector(state => state.application.isCoolBackground);
   const history = useHistory();
   const treasuryBalance = useTreasuryBalance();
   const daoEtherscanLink = buildEtherscanHoldingsLink(config.addresses.nounsDaoExecutor);
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    setIsAdmin(user.address === ADMIN_ADDRESS);
+  }, [user])
 
   const useStateBg =
     history.location.pathname === '/' ||
@@ -50,6 +61,10 @@ const NavBar = () => {
     : NavBarButtonStyle.WARM_INFO;
 
   const closeNav = () => setIsNavExpanded(false);
+
+  const handleGoToAdmin = () => {
+    history.push("/admin");
+  }
 
   return (
     <>
@@ -92,9 +107,8 @@ const NavBar = () => {
             onClick={() => setIsNavExpanded(!isNavExpanded)}
           />
           <Navbar.Collapse className="justify-content-end" style={{visibility:'visible'}}>
-            
-
-            <NavWallet address={activeAccount || '0'} buttonStyle={nonWalletButtonStyle} />{' '}
+            {isAdmin ? <div className='pr-4 cursor-pointer underline' onClick={() => handleGoToAdmin()}>admin</div> : ""}
+            <NavWallet address={user.address} buttonStyle={nonWalletButtonStyle} />{' '}
           </Navbar.Collapse>
         </Container>
       </Navbar>
