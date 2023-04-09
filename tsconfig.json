@@ -1,8 +1,15 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext", "es2015"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "es2015"
+    ],
     "allowJs": true,
     "composite": false,
     "declaration": false,
@@ -13,7 +20,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "./src/**/*"
+  ],
   "references": [
     {
       "path": "../nouns-contracts/tsconfig.build.json"
