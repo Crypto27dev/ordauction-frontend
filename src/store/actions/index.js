@@ -1,9 +1,8 @@
 import { createAction as action } from "typesafe-actions"
 
-// User Info
-export const setUserInfo = action("user/SET_USER_INFO")();
-
 // Global
+export const setUserInfo = action("global/SET_USER_INFO")();
+
 export const setAlertMessage = action("global/SET_ALERT_MESSAGE")();
 export const setNotifications = action("global/SET_NOTIFICATIONS")();
 export const setClearNotifications = action("global/CLEAR_NOTIFICATIONS")();

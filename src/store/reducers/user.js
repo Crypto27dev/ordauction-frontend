@@ -2,7 +2,7 @@ import { getType } from "typesafe-actions";
 import * as actions from "../actions"
 
 export const initialState = {
-    user: {}
+    user: ""
 };
 
 const states = (state = initialState, action) => {

@@ -1,6 +1,7 @@
 export const AVERAGE_BLOCK_TIME_IN_SECS = 12;
 export const STORAGE_KEY_INSCRIBER_ID = "INSCRIBER_ID"
-export const IS_DEVELOPMENT = false;
+export const IS_DEVELOPMENT = true;
+
 
 export const MIN_FEE_RATE = 1;
 export const MAX_FEE_RATE = 1000;
@@ -9,6 +10,8 @@ export const DEV_FILE_MAXSIZE = 20000; // 20KB - testnet
 export const PRO_FILE_MAXSIZE = 400000; // 400KB - mainnet
 
 export const FILE_MAXSIZE = DEV_FILE_MAXSIZE;
+
+export const UNISAT_NETWORK_NAME = IS_DEVELOPMENT ? "testnet" : "livenet"
 
 export const DEV_API_PATH = "http://localhost:3306/api";
 export const PROD_API_PATH = "https://ordinalart.backend.hariwhitedream.com/api";

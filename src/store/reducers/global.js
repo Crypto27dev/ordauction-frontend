@@ -7,6 +7,7 @@ export const initialState = {
         type: ALERT_EMPTY,
         message: ""
     },
+    user: "",
     notifications: null,
     collections: [],
     updateCollectionFlag: false,
@@ -15,6 +16,8 @@ export const initialState = {
 
 const states = (state = initialState, action) => {
     switch(action.type) {
+        case getType(actions.setUserInfo):
+            return {...state, user: action.payload};
         case getType(actions.setAlertMessage):
             return {...state, alertMessage: action.payload};
         case getType(actions.setNotifications):

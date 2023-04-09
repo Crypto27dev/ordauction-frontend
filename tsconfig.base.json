@@ -6,7 +6,7 @@
      */
     // "assumeChangesOnlyAffectDirectDependencies": true,
     "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
+    "alwaysStrict": false,
     "declaration": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -19,9 +19,10 @@
     "noImplicitThis":true,
     "outDir": "dist",
     "skipLibCheck": true,
-    "strict": true,
-    "strictNullChecks": true,
+    "strict": false,
+    "strictNullChecks": false,
     "target": "es6",
+    "jsx": "react-jsx"
   },
   "exclude": ["**/dist"]
 }

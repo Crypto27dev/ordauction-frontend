@@ -1,6 +1,6 @@
 import Davatar from '@davatar/react';
 import { useEthers } from '@usedapp/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useReverseENSLookUp } from '../../utils/ensLookup';
 import { getNavBarButtonVariant, NavBarButtonStyle } from '../NavBarButton';
 import classes from './NavWallet.module.css';
@@ -10,7 +10,8 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { faSortUp } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown } from 'react-bootstrap';
 import WalletConnectModal from '../WalletConnectModal';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import * as actions from "../../store/actions";
 import clsx from 'clsx';
 import { useHistory } from 'react-router-dom';
 import { usePickByState } from '../../utils/colorResponsiveUIUtils';
@@ -24,6 +25,8 @@ import {
 } from '../../utils/addressAndENSDisplayUtils';
 import { useActiveLocale } from '../../hooks/useActivateLocale';
 import responsiveUiUtilsClasses from '../../utils/ResponsiveUIUtils.module.css';
+import useBitcoinWallet from '../../hooks/useBitcoinWallet';
+import { useDispatch } from 'react-redux';
 
 interface NavWalletProps {
   address: string;
@@ -45,6 +48,9 @@ type CustomMenuProps = {
 };
 
 const NavWallet: React.FC<NavWalletProps> = props => {
+
+  const dispatch = useDispatch();
+
   const { address, buttonStyle } = props;
 
   const [buttonUp, setButtonUp] = useState(false);
@@ -54,8 +60,13 @@ const NavWallet: React.FC<NavWalletProps> = props => {
   const activeAccount = useAppSelector(state => state.account.activeAccount);
   const { deactivate } = useEthers();
   const ens = useReverseENSLookUp(address);
-  const shortAddress = useShortAddress(address);
+  // const shortAddress = useShortAddress(address);
   const activeLocale = useActiveLocale();
+
+  //// Bitcoin wallet connection
+  const { connected, connect, disconnect, account } = useBitcoinWallet();
+  const shortAddress = useShortAddress(connected?account.address:"");
+
 
   const setModalStateHandler = (state: boolean) => {
     setShowConnectModal(state);
@@ -69,11 +80,31 @@ const NavWallet: React.FC<NavWalletProps> = props => {
     setShowConnectModal(true);
   };
 
+
+  
+  useEffect(() => {
+    console.log(`------ connected=${connected} account=`, account, `------`);
+    const _address = account.address;
+    dispatch(actions.setUserInfo(_address));
+  }, [connected])
+
+  const onClickWalletConnect = async () => {
+    // console.log(">>> onClickWalletConnect");
+    await connect();
+  }
+
+  const onClickWalletDisconnect = async () => {
+    // console.log(">>> onClickWalletDisconnect");
+    setButtonUp(false);
+    await disconnect();
+  }
+
   const disconectWalletHandler = () => {
     setShowConnectModal(false);
     setButtonUp(false);
     deactivate();
   };
+
 
   const statePrimaryButtonClass = usePickByState(
     navDropdownClasses.whiteInfo,
@@ -127,7 +158,8 @@ const NavWallet: React.FC<NavWalletProps> = props => {
             {' '}
             <Davatar size={21} address={address} provider={provider} />
           </div>
-          <div className={navDropdownClasses.dropdownBtnContent}>{ens ? ens : shortAddress}</div>
+          {/* <div className={navDropdownClasses.dropdownBtnContent}>{ens ? ens : shortAddress}</div> */}
+          <div className={navDropdownClasses.dropdownBtnContent}>{connected? shortAddress : ""}</div>
           <div className={buttonUp ? navDropdownClasses.arrowUp : navDropdownClasses.arrowDown}>
             <FontAwesomeIcon icon={buttonUp ? faSortUp : faSortDown} />{' '}
           </div>
@@ -163,7 +195,7 @@ const NavWallet: React.FC<NavWalletProps> = props => {
           </div>
 
           <div
-            onClick={disconectWalletHandler}
+            onClick={onClickWalletDisconnect}
             className={clsx(
               classes.dropDownBottom,
               navDropdownClasses.button,
@@ -183,19 +215,19 @@ const NavWallet: React.FC<NavWalletProps> = props => {
     );
   });
 
-  const renderENS = (ens: string) => {
-    if (activeLocale === 'ja-JP') {
-      return veryShortENS(ens);
-    }
-    return shortENS(ens);
-  };
+  // const renderENS = (ens: string) => {
+  //   if (activeLocale === 'ja-JP') {
+  //     return veryShortENS(ens);
+  //   }
+  //   return shortENS(ens);
+  // };
 
-  const renderAddress = (address: string) => {
-    if (activeLocale === 'ja-JP') {
-      return veryShortAddress(address);
-    }
-    return shortAddress;
-  };
+  // const renderAddress = (address: string) => {
+  //   if (activeLocale === 'ja-JP') {
+  //     return veryShortAddress(address);
+  //   }
+  //   return shortAddress;
+  // };
 
   const walletConnectedContentMobile = (
     <div className={clsx(navDropdownClasses.nounsNavLink, responsiveUiUtilsClasses.mobileOnly)}>
@@ -238,7 +270,7 @@ const NavWallet: React.FC<NavWalletProps> = props => {
           >
             <Trans>Wallet Balance</Trans>
           </div>
-          <div className={classes.disconnectText} onClick={disconectWalletHandler}>
+          <div className={classes.disconnectText} onClick={onClickWalletDisconnect}>
             <Trans>Sign out</Trans>
           </div>
         </div>
@@ -256,12 +288,13 @@ const NavWallet: React.FC<NavWalletProps> = props => {
     </Dropdown>
   );
 
+
   return (
     <>
-      {showConnectModal && activeAccount === undefined && (
+      {/* {showConnectModal && activeAccount === undefined && (
         <WalletConnectModal onDismiss={() => setModalStateHandler(false)} />
-      )}
-      {activeAccount ? (
+      )} */}
+      {connected ? (
         <>
           {walletConnectedContentDesktop}
           {walletConnectedContentMobile}
@@ -269,7 +302,8 @@ const NavWallet: React.FC<NavWalletProps> = props => {
       ) : (
         <WalletConnectButton
           className={clsx(navDropdownClasses.nounsNavLink, navDropdownClasses.connectBtn)}
-          onClickHandler={() => setModalStateHandler(true)}
+          // onClickHandler={() => setModalStateHandler(true)}
+          onClickHandler={onClickWalletConnect}
           buttonStyle={connectWalletButtonStyle}
         />
       )}

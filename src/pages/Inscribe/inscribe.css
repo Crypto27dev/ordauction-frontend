@@ -17,3 +17,7 @@ h1.page-header {
 .Inscribe .react-calendar button, select {
     color: rgb(54 149 247);
 }
+
+.input-fee-rate {
+    border-color: #4da6d3 !important;
+}

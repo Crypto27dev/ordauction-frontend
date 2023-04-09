@@ -15,9 +15,9 @@ const Footer = () => {
     <div className={classes.wrapper}>
       <Container className={classes.container}>
         <footer className={classes.footerSignature}>
-          <Link text={<Trans>Twitter</Trans>} url={twitterURL} leavesPage={true} />
-          <Link text={<Trans>Etherscan</Trans>} url={etherscanURL} leavesPage={true} />
-          <Link text={<Trans>Forums</Trans>} url={discourseURL} leavesPage={false} />
+          <Link text={<Trans>Twitter</Trans>} url={"/"} leavesPage={true} />
+          <Link text={<Trans>Etherscan</Trans>} url={"/"} leavesPage={true} />
+          <Link text={<Trans>Forums</Trans>} url={"/"} leavesPage={false} />
         </footer>
       </Container>
     </div>
